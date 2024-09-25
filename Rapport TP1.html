@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Travail Pratique 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Rapport TP1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Rapport TP1_files/libs/quarto-html/quarto.js"></script>
+<script src="Rapport TP1_files/libs/quarto-html/popper.min.js"></script>
+<script src="Rapport TP1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Rapport TP1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Rapport TP1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Rapport TP1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Rapport TP1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Rapport TP1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Rapport TP1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">INTRODUCTION</a></li>
+  <li><a href="#exercice-1" id="toc-exercice-1" class="nav-link" data-scroll-target="#exercice-1"><strong>EXERCICE 1</strong></a>
+  <ul class="collapse">
+  <li><a href="#chargement-et-visualisation-des-données" id="toc-chargement-et-visualisation-des-données" class="nav-link" data-scroll-target="#chargement-et-visualisation-des-données"><u>Chargement et visualisation des données :</u></a></li>
+  <li><a href="#exe" id="toc-exe" class="nav-link" data-scroll-target="#exe">Exe</a></li>
+  <li><a href="#accéder-aux-différentes-composantes-du-vecteur" id="toc-accéder-aux-différentes-composantes-du-vecteur" class="nav-link" data-scroll-target="#accéder-aux-différentes-composantes-du-vecteur"><u>Accéder aux différentes composantes du vecteur</u></a></li>
+  <li><a href="#création-dun-vecteur-et-manipulation-des-composantes" id="toc-création-dun-vecteur-et-manipulation-des-composantes" class="nav-link" data-scroll-target="#création-dun-vecteur-et-manipulation-des-composantes"><u>Création d’un vecteur et manipulation des composantes</u></a></li>
+  <li><a href="#afficher-le-contenu-de-lenvironnement-de-travail" id="toc-afficher-le-contenu-de-lenvironnement-de-travail" class="nav-link" data-scroll-target="#afficher-le-contenu-de-lenvironnement-de-travail"><u>Afficher le contenu de l’environnement de travail</u></a></li>
+  </ul></li>
+  <li><a href="#exercice-2" id="toc-exercice-2" class="nav-link" data-scroll-target="#exercice-2">EXERCICE 2</a>
+  <ul class="collapse">
+  <li><a href="#diagramme-branche-et-feuilles-histogramme-boîte-à-moustache" id="toc-diagramme-branche-et-feuilles-histogramme-boîte-à-moustache" class="nav-link" data-scroll-target="#diagramme-branche-et-feuilles-histogramme-boîte-à-moustache">Diagramme branche-et-feuilles, histogramme, boîte à moustache</a></li>
+  <li><a href="#analyse-des-données" id="toc-analyse-des-données" class="nav-link" data-scroll-target="#analyse-des-données">Analyse des données</a>
+  <ul class="collapse">
+  <li><a href="#valeurs-atypiques-et-asymétrie" id="toc-valeurs-atypiques-et-asymétrie" class="nav-link" data-scroll-target="#valeurs-atypiques-et-asymétrie">Valeurs atypiques et asymétrie</a></li>
+  <li><a href="#médiane-et-moyenne" id="toc-médiane-et-moyenne" class="nav-link" data-scroll-target="#médiane-et-moyenne">Médiane et Moyenne</a></li>
+  <li><a href="#modes-des-valeurs-observées" id="toc-modes-des-valeurs-observées" class="nav-link" data-scroll-target="#modes-des-valeurs-observées">Modes des valeurs observées</a></li>
+  <li><a href="#commande-summarycpus" id="toc-commande-summarycpus" class="nav-link" data-scroll-target="#commande-summarycpus">Commande summary(cpus)</a></li>
+  <li><a href="#modification-des-valeurs-et-effet-sur-la-médiane-et-la-moyenne" id="toc-modification-des-valeurs-et-effet-sur-la-médiane-et-la-moyenne" class="nav-link" data-scroll-target="#modification-des-valeurs-et-effet-sur-la-médiane-et-la-moyenne">Modification des valeurs et effet sur la médiane et la moyenne</a></li>
+  <li><a href="#écart-type" id="toc-écart-type" class="nav-link" data-scroll-target="#écart-type">Écart-type</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#exercice-3" id="toc-exercice-3" class="nav-link" data-scroll-target="#exercice-3">EXERCICE 3</a>
+  <ul class="collapse">
+  <li><a href="#boîte-à-moustache" id="toc-boîte-à-moustache" class="nav-link" data-scroll-target="#boîte-à-moustache">Boîte à moustache</a>
+  <ul class="collapse">
+  <li><a href="#bâtonnets-des-notes" id="toc-bâtonnets-des-notes" class="nav-link" data-scroll-target="#bâtonnets-des-notes">Bâtonnets des notes</a></li>
+  </ul></li>
+  <li><a href="#analyse-des-boîtes-à-moustache" id="toc-analyse-des-boîtes-à-moustache" class="nav-link" data-scroll-target="#analyse-des-boîtes-à-moustache">Analyse des boîtes à moustache</a>
+  <ul class="collapse">
+  <li><a href="#dispersions" id="toc-dispersions" class="nav-link" data-scroll-target="#dispersions">Dispersions</a></li>
+  <li><a href="#écarts-types" id="toc-écarts-types" class="nav-link" data-scroll-target="#écarts-types">Écarts-types</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  <li><a href="#diagramme-de-densité" id="toc-diagramme-de-densité" class="nav-link" data-scroll-target="#diagramme-de-densité">Diagramme de densité</a></li>
+  </ul></li>
+  <li><a href="#exercice-4" id="toc-exercice-4" class="nav-link" data-scroll-target="#exercice-4">EXERCICE 4</a></li>
+  <li><a href="#données" id="toc-données" class="nav-link" data-scroll-target="#données">Données</a></li>
+  <li><a href="#valeurs-manquantes" id="toc-valeurs-manquantes" class="nav-link" data-scroll-target="#valeurs-manquantes">Valeurs manquantes</a></li>
+  <li><a href="#analyse" id="toc-analyse" class="nav-link" data-scroll-target="#analyse">Analyse</a></li>
+  <li><a href="#temps-maximal" id="toc-temps-maximal" class="nav-link" data-scroll-target="#temps-maximal">Temps maximal</a></li>
+  <li><a href="#exercice-5" id="toc-exercice-5" class="nav-link" data-scroll-target="#exercice-5">EXERCICE 5</a>
+  <ul class="collapse">
+  <li><a href="#coefficients-de-corrélation" id="toc-coefficients-de-corrélation" class="nav-link" data-scroll-target="#coefficients-de-corrélation">Coefficients de corrélation</a></li>
+  </ul></li>
+  <li><a href="#exercice-6" id="toc-exercice-6" class="nav-link" data-scroll-target="#exercice-6">EXERCICE 6</a>
+  <ul class="collapse">
+  <li><a href="#téléchargement-des-données" id="toc-téléchargement-des-données" class="nav-link" data-scroll-target="#téléchargement-des-données">Téléchargement des données</a></li>
+  <li><a href="#nuage-de-points" id="toc-nuage-de-points" class="nav-link" data-scroll-target="#nuage-de-points">Nuage de points</a>
+  <ul class="collapse">
+  <li><a href="#analyses" id="toc-analyses" class="nav-link" data-scroll-target="#analyses">Analyses</a></li>
+  </ul></li>
+  <li><a href="#corrélation" id="toc-corrélation" class="nav-link" data-scroll-target="#corrélation">Corrélation</a></li>
+  <li><a href="#différencier-les-types-diris" id="toc-différencier-les-types-diris" class="nav-link" data-scroll-target="#différencier-les-types-diris">Différencier les types d’iris</a></li>
+  <li><a href="#animations" id="toc-animations" class="nav-link" data-scroll-target="#animations">Animations</a></li>
+  <li><a href="#bonus" id="toc-bonus" class="nav-link" data-scroll-target="#bonus">Bonus</a></li>
+  </ul></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1">CONCLUSION</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Travail Pratique 1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level1">
+<h1>INTRODUCTION</h1>
+<p>Ce TP a pour principal objectif de nous initier au langage R en utilisant le logiciel RStudio. Il est indéniable que ces deux outils sont extrêmement puissants pour l’analyse de vastes ensembles de données. RStudio se distingue par sa convivialité, car une fois que nous aurons compris les bases, il nous suffira de copier, coller et ajuster les formules pour les adapter à nos données spécifiques. Cette approche nous permettra d’explorer les multiples possibilités offertes par ces outils pour analyser nos données.</p>
+<p>Nos objectifs dans ce TP seront de maîtriser la manipulation de vecteurs, d’apprendre à rechercher des données et de les modifier à notre convenance. Une fois que nous aurons acquis ces compétences, nous serons en mesure de synthétiser nos données en utilisant différents types de graphiques. Ensuite, nous pourrons les analyser en vue de repérer diverses caractéristiques de leur distribution, telles que la dispersion, les valeurs atypiques, la moyenne, la médiane, l’écart-type, et bien d’autres encore.</p>
+<p>En somme, ce travail pratique nous permettra de développer des compétences essentielles en matière d’analyse de données à l’aide de R et RStudio, tout en nous familiarisant avec les différentes étapes de traitement et de visualisation des données.</p>
+</section>
+<section id="exercice-1" class="level1">
+<h1><strong>EXERCICE 1</strong></h1>
+<section id="chargement-et-visualisation-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="chargement-et-visualisation-des-données"><u>Chargement et visualisation des données :</u></h2>
+</section>
+<section id="exe" class="level2">
+<h2 class="anchored" data-anchor-id="exe">Exe</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cpus <span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"./TP1 - données/cpus.txt"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>examen <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"./TP1 - données/examen.txt"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cpus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  46 110  38  22  11 510  38  76  21  92  44  66  24  10  25 915  26  56  40
+[20]   7 185 141  14  24  19  24  32  33 370  58  12  66  62  12  45 133  64 144
+[39]  36 130  16  36  65 136  60  18  66  30 100  36</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>examen</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   groupe note
+1       A  3.5
+2       A  3.0
+3       A  2.0
+4       A  3.8
+5       A  2.0
+6       A  1.9
+7       A  4.4
+8       A  3.5
+9       A  4.3
+10      A  4.0
+11      A  3.8
+12      A  3.9
+13      A  2.2
+14      A  3.4
+15      A  4.2
+16      A  3.3
+17      A  4.0
+18      A  4.5
+19      B  4.3
+20      B  5.6
+21      B  5.9
+22      B  3.9
+23      B  4.0
+24      B  4.5
+25      B  5.4
+26      B  4.4
+27      B  4.7
+28      B  4.6
+29      B  3.8
+30      B  4.3
+31      B  3.8
+32      B  3.2</code></pre>
+</div>
+</div>
+</section>
+<section id="accéder-aux-différentes-composantes-du-vecteur" class="level2">
+<h2 class="anchored" data-anchor-id="accéder-aux-différentes-composantes-du-vecteur"><u>Accéder aux différentes composantes du vecteur</u></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cpus[<span class="dv">12</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 66</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cpus[<span class="dv">3</span><span class="sc">:</span><span class="dv">19</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  38  22  11 510  38  76  21  92  44  66  24  10  25 915  26  56  40</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cpus[cpus<span class="sc">&gt;</span><span class="dv">190</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 510 915 370</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>examen<span class="sc">$</span>note</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 3.5 3.0 2.0 3.8 2.0 1.9 4.4 3.5 4.3 4.0 3.8 3.9 2.2 3.4 4.2 3.3 4.0 4.5 4.3
+[20] 5.6 5.9 3.9 4.0 4.5 5.4 4.4 4.7 4.6 3.8 4.3 3.8 3.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>examen<span class="sc">$</span>note[<span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.4</code></pre>
+</div>
+</div>
+</section>
+<section id="création-dun-vecteur-et-manipulation-des-composantes" class="level2">
+<h2 class="anchored" data-anchor-id="création-dun-vecteur-et-manipulation-des-composantes"><u>Création d’un vecteur et manipulation des composantes</u></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mesdonnees <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.9</span>, <span class="fl">3.4</span>, <span class="fl">3.4</span>, <span class="fl">3.7</span>, <span class="fl">3.7</span>, <span class="fl">2.8</span>, <span class="fl">2.1</span>, <span class="fl">2.5</span>, <span class="fl">2.6</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mesdonnees</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.9 3.4 3.4 3.7 3.7 2.8 2.1 2.5 2.6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>couleurs <span class="ot">&lt;-</span> <span class="fu">c</span> (<span class="st">"bleu"</span>, <span class="st">"vert"</span>, <span class="st">"blanc"</span>, <span class="st">"noir"</span>, <span class="st">"jaune"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mesdonnees[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.9 3.4 2.8 2.1 2.5 2.6</code></pre>
+</div>
+</div>
+</section>
+<section id="afficher-le-contenu-de-lenvironnement-de-travail" class="level2">
+<h2 class="anchored" data-anchor-id="afficher-le-contenu-de-lenvironnement-de-travail"><u>Afficher le contenu de l’environnement de travail</u></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "couleurs"        "cpus"            "examen"          "has_annotations"
+[5] "mesdonnees"     </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="exercice-2" class="level1">
+<h1>EXERCICE 2</h1>
+<section id="diagramme-branche-et-feuilles-histogramme-boîte-à-moustache" class="level2">
+<h2 class="anchored" data-anchor-id="diagramme-branche-et-feuilles-histogramme-boîte-à-moustache">Diagramme branche-et-feuilles, histogramme, boîte à moustache</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(cpus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 2 digit(s) to the right of the |
+
+  0 | 111111222222223333344444445566666777789
+  1 | 01334449
+  2 | 
+  3 | 7
+  4 | 
+  5 | 1
+  6 | 
+  7 | 
+  8 | 
+  9 | 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">pty=</span><span class="st">"s"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(cpus, <span class="at">xlab=</span><span class="st">"performance relative"</span>, <span class="at">ylab =</span> <span class="st">"fréquence"</span>, <span class="at">main =</span> <span class="st">""</span>, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"darkslategray4"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(cpus, <span class="at">xlab =</span> <span class="st">"performance relative"</span>, <span class="at">col =</span>  <span class="st">"darkslategray4"</span>, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> T)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rug</span>(cpus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Rapport-TP1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li></li>
+</ol>
+<ul>
+<li>La commande par(mfrow=c(1,2)) permet de mettre l’histiogramme et la boîte à moustache côte-à-côte.</li>
+<li>c(1,2) détermine qu’il y aura 1 ligne et 2 colonnes.</li>
+<li>Le paramètre pty = “s”, permet de spécifier la forme du graphique (s ou m). Dans notre cas, il sera d’une forme carré au lieu de maximale.</li>
+<li>En soi la commande par(mfrow=c(1,2), pty=“s”) permet alors de mettre les graphiques l’un à côté de l’autre avec une forme carrée. Cela permet une meilleure vision d’ensemble et une bonne visibilité des données.</li>
+</ul>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<ul>
+<li>La commande rug(cpus) permet d’ajouter un rug plot sur l’axe x, il s’agit d’un graphique de données pour une seule variable quantitative, affiché sous forme de marques le long d’un axe. Cela permet de visualiser la distribution des données.</li>
+</ul>
+</section>
+<section id="analyse-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="analyse-des-données">Analyse des données</h2>
+<section id="valeurs-atypiques-et-asymétrie" class="level3">
+<h3 class="anchored" data-anchor-id="valeurs-atypiques-et-asymétrie">Valeurs atypiques et asymétrie</h3>
+<p>On remarque une forte asymétrie à gauche (asymétrie négative), il y a énormément de fréquences inférieures à 100.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(cpus[cpus<span class="sc">&lt;</span><span class="dv">101</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 40</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(cpus[cpus<span class="sc">&gt;</span><span class="dv">100</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>On retrouve 40 fréquences inférieures ou égales à 100 et seulement 10 qui sont supérieures à 100.</p>
+<p>On peut ainsi voir des valeurs atypiques sur l’histogramme, en effet quelques fréquences semblent être très éloignées des autres (à partir de 200). Une valeur est même supérieure à 900</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>cpus[cpus<span class="sc">&gt;</span><span class="dv">200</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 510 915 370</code></pre>
+</div>
+</div>
+</section>
+<section id="médiane-et-moyenne" class="level3">
+<h3 class="anchored" data-anchor-id="médiane-et-moyenne">Médiane et Moyenne</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(cpus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(cpus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 86.88</code></pre>
+</div>
+</div>
+<p>La fréquence moyenne est de 86.88, alors que la médiane est à 42. Au vu de l’asymétrie de la distribution il serait plus adéquat d’utiliser la médiane dans le cas présent.</p>
+</section>
+<section id="modes-des-valeurs-observées" class="level3">
+<h3 class="anchored" data-anchor-id="modes-des-valeurs-observées">Modes des valeurs observées</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>n.cpus <span class="ot">&lt;-</span> <span class="fu">table</span>(cpus)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">names</span>(n.cpus)[n.cpus<span class="sc">==</span><span class="fu">max</span>(n.cpus)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24 36 66</code></pre>
+</div>
+</div>
+<p>Les modes des valeurs observées (valeurs dont l’effectif est le plus élevé dans une distribution de données) sont 24, 36 et 66. On voit donc que beaucoup de processeurs ont une performance relative qui se situe à 24, 36 et 66.</p>
+</section>
+<section id="commande-summarycpus" class="level3">
+<h3 class="anchored" data-anchor-id="commande-summarycpus">Commande summary(cpus)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cpus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   7.00   24.00   42.00   86.88   73.50  915.00 </code></pre>
+</div>
+</div>
+<p>La fonction summary permet d’obtenir les informations résumées de la distribution. Elle nous permet d’apercevoir le minimum, le maximum, les quartiles, la moyenne et la médiane.</p>
+</section>
+<section id="modification-des-valeurs-et-effet-sur-la-médiane-et-la-moyenne" class="level3">
+<h3 class="anchored" data-anchor-id="modification-des-valeurs-et-effet-sur-la-médiane-et-la-moyenne">Modification des valeurs et effet sur la médiane et la moyenne</h3>
+<ol type="1">
+<li>Si on ajoute un processeur de performance relative 43 à l’ensemble des valeurs, la moyenne et la médiane ne changeraient presque pas.</li>
+<li>Si on soustrait 9 à chaque valeur observée, la moyenne et la médiance diminueraient de 9 aussi.</li>
+<li>Si on divise par 3 les observations, la moyenne et la médiane seraient aussi divisées par 3.</li>
+</ol>
+</section>
+<section id="écart-type" class="level3">
+<h3 class="anchored" data-anchor-id="écart-type">Écart-type</h3>
+<section id="avec-valeurs-atypiques" class="level4">
+<h4 class="anchored" data-anchor-id="avec-valeurs-atypiques">Avec valeurs atypiques</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(cpus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 148.4294</code></pre>
+</div>
+</div>
+<p>L’écart-type est de 148.4294</p>
+</section>
+<section id="sans-valeurs-atypiques" class="level4">
+<h4 class="anchored" data-anchor-id="sans-valeurs-atypiques">Sans valeurs atypiques</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>cpuBoxplot<span class="ot">&lt;-</span><span class="fu">boxplot</span>(cpus, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>cpuBoxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$stats
+     [,1]
+[1,]    7
+[2,]   24
+[3,]   42
+[4,]   76
+[5,]  144
+
+$n
+[1] 50
+
+$conf
+         [,1]
+[1,] 30.38082
+[2,] 53.61918
+
+$out
+[1] 510 915 185 370
+
+$group
+[1] 1 1 1 1
+
+$names
+[1] "1"</code></pre>
+</div>
+</div>
+<p>Les valeurs atypiques sont : 510, 915, 185, 370</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>cpusnonat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">46</span>, <span class="dv">110</span>,  <span class="dv">38</span>,  <span class="dv">22</span>,  <span class="dv">11</span>,  <span class="dv">38</span>,  <span class="dv">76</span>,  <span class="dv">21</span>,  <span class="dv">92</span>,</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>            <span class="dv">44</span>,  <span class="dv">66</span>,  <span class="dv">24</span>,  <span class="dv">10</span>,  <span class="dv">25</span>, <span class="dv">26</span>,  <span class="dv">56</span>,  <span class="dv">40</span>,   <span class="dv">7</span>, </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>            <span class="dv">141</span>,  <span class="dv">14</span>,  <span class="dv">24</span>,  <span class="dv">19</span>,  <span class="dv">24</span>,  <span class="dv">32</span>,  <span class="dv">33</span>,  <span class="dv">58</span>, </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>            <span class="dv">12</span>,  <span class="dv">66</span>,  <span class="dv">62</span>,  <span class="dv">12</span>,  <span class="dv">45</span>, <span class="dv">133</span>,  <span class="dv">64</span>, <span class="dv">144</span>,  <span class="dv">36</span>, <span class="dv">130</span>, </span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>            <span class="dv">16</span>,  <span class="dv">36</span>,  <span class="dv">65</span>, <span class="dv">136</span>,  <span class="dv">60</span>,  <span class="dv">18</span>,  <span class="dv">66</span>,  <span class="dv">30</span>, <span class="dv">100</span>,  <span class="dv">36</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(cpusnonat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 38.5864</code></pre>
+</div>
+</div>
+<p>L’écart-type passe de 148.4294 à 38.5864 une fois que l’on enlève les valeurs atypiques. L’écart-type mesure la dispersion d’un ensemble de valeurs autours de leur moyenne, plus ce dernier est petit plus la population est homogène. Étant donné que lorsque l’on enlève nos valeurs atypiques, l’écart-type diminue drastiquement, on ne peut donc pas considérer qu’il soit un indicateur robuste, de plus il est encore très grand. On peut donc en conclure que la distribution est tout de même peu homogène.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="exercice-3" class="level1">
+<h1>EXERCICE 3</h1>
+<section id="boîte-à-moustache" class="level2">
+<h2 class="anchored" data-anchor-id="boîte-à-moustache">Boîte à moustache</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>examen</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   groupe note
+1       A  3.5
+2       A  3.0
+3       A  2.0
+4       A  3.8
+5       A  2.0
+6       A  1.9
+7       A  4.4
+8       A  3.5
+9       A  4.3
+10      A  4.0
+11      A  3.8
+12      A  3.9
+13      A  2.2
+14      A  3.4
+15      A  4.2
+16      A  3.3
+17      A  4.0
+18      A  4.5
+19      B  4.3
+20      B  5.6
+21      B  5.9
+22      B  3.9
+23      B  4.0
+24      B  4.5
+25      B  5.4
+26      B  4.4
+27      B  4.7
+28      B  4.6
+29      B  3.8
+30      B  4.3
+31      B  3.8
+32      B  3.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>lblue<span class="ot">&lt;-</span><span class="st">"#528B8B"</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">pty=</span><span class="st">"s"</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(note<span class="sc">~</span>groupe, <span class="at">data=</span>examen, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>), <span class="at">xlab=</span><span class="st">"groupe"</span>,</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="at">varwidth=</span>T, <span class="at">col=</span>lblue, <span class="at">main=</span><span class="st">"examen"</span>)</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">4</span>, <span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Rapport-TP1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="bâtonnets-des-notes" class="level3">
+<h3 class="anchored" data-anchor-id="bâtonnets-des-notes">Bâtonnets des notes</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>lblue<span class="ot">&lt;-</span><span class="st">"#528B8B"</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">pty=</span><span class="st">"s"</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(note<span class="sc">~</span>groupe, <span class="at">data=</span>examen, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>), <span class="at">xlab=</span><span class="st">"groupe"</span>,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="at">varwidth=</span>T, <span class="at">col=</span>lblue, <span class="at">main=</span><span class="st">"examen"</span>)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">4</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>note.A<span class="ot">&lt;-</span><span class="fu">split</span>(examen<span class="sc">$</span>note, examen<span class="sc">$</span>groupe)<span class="sc">$</span>A</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>note.B<span class="ot">&lt;-</span><span class="fu">split</span>(examen<span class="sc">$</span>note, examen<span class="sc">$</span>groupe)<span class="sc">$</span>B</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rug</span>(note.A, <span class="at">side =</span> <span class="dv">2</span>)</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rug</span>(note.B, <span class="at">side =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Rapport-TP1_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="analyse-des-boîtes-à-moustache" class="level2">
+<h2 class="anchored" data-anchor-id="analyse-des-boîtes-à-moustache">Analyse des boîtes à moustache</h2>
+<p>En se basant sur les boîtes à moustache, une différence semble apparaître. En effet, la distribution du groupe A est inférieure à celle du groupe B. La différence se remarque aussi à-travers les médiances des deux groupes. On peut alors conclure ici que la classe A a une médiane plus basse que la classe B. Cependant il est difficile de savoir si elle est significative juste à l’aide des boîtes à moustache.</p>
+<section id="dispersions" class="level3">
+<h3 class="anchored" data-anchor-id="dispersions">Dispersions</h3>
+<p>Les dispersions des groupes est différentes ; le groupe A est asymétrique négativement, car il y a plus de valeurs basses (la médiane se situe plus contre le haut de la boîte, indiquant une proportion plus élevée de notes basses), alors que le groupe B est symétrique (la médiane se situe plus ou moins au centre). On peut alors remarquer que la classe A semble avoir eu plus de mauvaises notes que la classe B.</p>
+</section>
+<section id="écarts-types" class="level3">
+<h3 class="anchored" data-anchor-id="écarts-types">Écarts-types</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(examen<span class="sc">$</span>note,examen<span class="sc">$</span>groupe, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>examen$groupe: A
+[1] 0.8655536
+------------------------------------------------------------ 
+examen$groupe: B
+[1] 0.7531618</code></pre>
+</div>
+</div>
+<p>D’après les deux écarts-types, la distribution des deux groupes est homogène, bien que celle du groupe A est légèrement moins homogène que celle du groupe B.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>D’après ce que nous avons pu observer avant, les deux distributions ont une dispersion homogène. Nous pouvons aussi remarquer, en nous basant sur la médiane, que en moyenne la classe B a de meilleurs résultats et une meilleure moyenne de classe que la classe A. Les performances moyennes de la classes A se situe entre le 3 et le 4, alors que celles de la classe B sont entre 4 et 5. De manière générale, la classe A a la majeure partie de ses notes en-dessous de 4. Les étudiants de la classe A semble alors, en regardant leurs notes, moins performants en statistiques que ceux de l’autre classe. Cependant, afin de déterminer si la différence est significative, il nous faudrait procéder à un test de Student de comparaison des moyennes.</p>
+</section>
+</section>
+<section id="diagramme-de-densité" class="level2">
+<h2 class="anchored" data-anchor-id="diagramme-de-densité">Diagramme de densité</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Ressources/plot_ex3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Ici, le graphique de densité serait plus pertinent pour voir plus précisément la distribution de chaque groupe. Ce dernier permet une meilleure vision des performances des élèves lors de leurs examens, on voit que les valeurs extrêmes de chaque groupe à un fort impact sur la médiane des groupes. Les boîtes à moustache sont pertinentes pour regarder la dispersion des groupes, mais ne montrent pas le nombre d’élèves ayant obtenu la note. En regardant les boîtes à moustache, on dirait que les groupes diffèrent énormément, mais en se basant sur les diagrammes de densité, on peut se rendre compte qu’ils ont énormément d’étudiants qui ont des notes similaires entre les deux classes. On remarque effectivement que ce qui change les médianes ici ce sont les valeurs extrêmes qui tendent vers le bas pour la classe A et vers le haut pour la classe B. Dans la classe A les étudiants avec des notes tournant autours de 2 font drastiquement baisser la médiance, et à l’inverse les meilleurs étudiants de la classe l’augmente.</p>
+</section>
+</section>
+<section id="exercice-4" class="level1">
+<h1>EXERCICE 4</h1>
+</section>
+<section id="données" class="level1">
+<h1>Données</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("arules")</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Le chargement a nécessité le package : Matrix</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attachement du package : 'arules'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Les objets suivants sont masqués depuis 'package:base':
+
+    abbreviate, write</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"AdultUCI"</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>dframe<span class="ot">&lt;-</span>AdultUCI[, <span class="fu">c</span>(<span class="st">"education"</span>, <span class="st">"hours-per-week"</span>)]</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dframe)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"education"</span>, <span class="st">"hours_per_week"</span>)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dframe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   48842 obs. of  2 variables:
+ $ education     : Ord.factor w/ 16 levels "Preschool"&lt;"1st-4th"&lt;..: 14 14 9 7 14 15 5 9 15 14 ...
+ $ hours_per_week: int  40 13 40 40 40 40 16 45 50 40 ...</code></pre>
+</div>
+</div>
+<p>Le changement de nom de variable permet de déterminer quelles informations on cherche à voir, en les précisant dans le vecteur c, ici “education” et “hours-per-week”. Étant donné que “AdultUCI” comporte énormément d’information, le fait de passer à la variable “dframe” permet de sélectionner uniquement les données qui nous intéressent, ici l’éducation et le temps de travail par semaine.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ggplot2")</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dframe, <span class="fu">aes</span>(<span class="at">x=</span>hours_per_week, <span class="at">y=</span>education)) <span class="sc">+</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">colour=</span><span class="st">"lightblue"</span>, <span class="at">alpha=</span><span class="fl">0.1</span>, <span class="at">position=</span><span class="st">"jitter"</span>) <span class="sc">+</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="at">outlier.size=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Rapport-TP1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Dans l’ensemble, on peut remarquer que, en général, plus la personne a un niveau élevé d’étude, plus ses heures de travail seront élevées. Cette augmentation des heures commence à partir de “HS-grad” et semble constante pour les grades au-dessus. Cependant on remarque que les personnes situées dans la catégorie “some college” ont un temps de travail moins élevé. On peut alors hypothétiser que plus la personne a un degré d’étude élevée plus elle aura d’heures de travail dans la semaine.</p>
+</section>
+<section id="valeurs-manquantes" class="level1">
+<h1>Valeurs manquantes</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(AdultUCI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 48842    15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>nrows<span class="ot">&lt;-</span><span class="fu">nrow</span>(AdultUCI)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>n.missing<span class="ot">&lt;-</span><span class="fu">rowSums</span>(<span class="fu">is.na</span>(AdultUCI))</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(n.missing<span class="sc">&gt;</span><span class="dv">0</span>)<span class="sc">/</span>nrows</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3824577</code></pre>
+</div>
+</div>
+</section>
+<section id="analyse" class="level1">
+<h1>Analyse</h1>
+<section id="dispersion" class="level4">
+<h4 class="anchored" data-anchor-id="dispersion">Dispersion</h4>
+<p>On remarque que la formation “11th” est celle qui possède la plus grande dispersion du lot</p>
+</section>
+<section id="médianes" class="level4">
+<h4 class="anchored" data-anchor-id="médianes">Médianes</h4>
+<p>Dans l’ensemble on peut voir que presque toutes les formations ont une médiane qui s’aligne sur 43 ou 44h par semaine environ, sauf pour les catégories “prof school” et “doctorate”, qui ont une médiane plus grande (49h environ pour l’école professionnelle et 45h environ pour les doctorants). On pourrait donc dire qu’il n’y a pas de différence flagrante de médiane entre les types de formation sauf pour “prof school” et “doctorate” qui ont tendance à travailler plus.</p>
+</section>
+</section>
+<section id="temps-maximal" class="level1">
+<h1>Temps maximal</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>nx<span class="ot">&lt;-</span><span class="fu">by</span>(dframe<span class="sc">$</span>hours_per_week, dframe<span class="sc">$</span>education, max, <span class="at">na.rm=</span>T)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>nx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dframe$education: Preschool
+[1] 75
+------------------------------------------------------------ 
+dframe$education: 1st-4th
+[1] 96
+------------------------------------------------------------ 
+dframe$education: 5th-6th
+[1] 99
+------------------------------------------------------------ 
+dframe$education: 7th-8th
+[1] 99
+------------------------------------------------------------ 
+dframe$education: 9th
+[1] 99
+------------------------------------------------------------ 
+dframe$education: 10th
+[1] 99
+------------------------------------------------------------ 
+dframe$education: 11th
+[1] 99
+------------------------------------------------------------ 
+dframe$education: 12th
+[1] 99
+------------------------------------------------------------ 
+dframe$education: HS-grad
+[1] 99
+------------------------------------------------------------ 
+dframe$education: Prof-school
+[1] 99
+------------------------------------------------------------ 
+dframe$education: Assoc-acdm
+[1] 99
+------------------------------------------------------------ 
+dframe$education: Assoc-voc
+[1] 99
+------------------------------------------------------------ 
+dframe$education: Some-college
+[1] 99
+------------------------------------------------------------ 
+dframe$education: Bachelors
+[1] 99
+------------------------------------------------------------ 
+dframe$education: Masters
+[1] 99
+------------------------------------------------------------ 
+dframe$education: Doctorate
+[1] 99</code></pre>
+</div>
+</div>
+<section id="formation-avec-le-temps-maximal" class="level4">
+<h4 class="anchored" data-anchor-id="formation-avec-le-temps-maximal">Formation avec le temps maximal</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(nx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 99</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(nx)[nx<span class="sc">==</span><span class="fu">max</span>(nx)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "5th-6th"      "7th-8th"      "9th"          "10th"         "11th"        
+ [6] "12th"         "HS-grad"      "Prof-school"  "Assoc-acdm"   "Assoc-voc"   
+[11] "Some-college" "Bachelors"    "Masters"      "Doctorate"   </code></pre>
+</div>
+</div>
+<p>On remarque que beaucoup de types de formation ont des valeurs maximales de 99 heures par semaines. Ce résultat est à la fois surprenant, mais compréhensible de par le fait que les valeurs trouvées ici sont des valeurs atypiques se situant en-dehors de l’écart-type. Il s’agit donc de quelques individus (40 en tout) qui estiment passer 99 heures par semaine à travailler (une moyenne de 14h par jour). Cependant, ce résultat n’est pas représentatif de l’ensemble de l’échantillon/de la population. Le fait qu’autant de personnes avec tout type de formation estiment travailleur autant d’heures par semaine est tout de même surprenant. Il faudrait pour savoir précisément quelle formation engendre le plus d’heures de travail par semaine, il faudrait regarder les formations qui possèdent le plus de personnes ayant répondu la valeur maximale.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>nsd<span class="ot">&lt;-</span><span class="fu">by</span>(dframe<span class="sc">$</span>hours_per_week, dframe<span class="sc">$</span>education, sd, <span class="at">na.rm=</span>T)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>nsd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dframe$education: Preschool
+[1] 11.434
+------------------------------------------------------------ 
+dframe$education: 1st-4th
+[1] 12.22667
+------------------------------------------------------------ 
+dframe$education: 5th-6th
+[1] 11.37219
+------------------------------------------------------------ 
+dframe$education: 7th-8th
+[1] 14.56277
+------------------------------------------------------------ 
+dframe$education: 9th
+[1] 11.46478
+------------------------------------------------------------ 
+dframe$education: 10th
+[1] 13.91801
+------------------------------------------------------------ 
+dframe$education: 11th
+[1] 13.9968
+------------------------------------------------------------ 
+dframe$education: 12th
+[1] 12.62027
+------------------------------------------------------------ 
+dframe$education: HS-grad
+[1] 11.42384
+------------------------------------------------------------ 
+dframe$education: Prof-school
+[1] 14.98344
+------------------------------------------------------------ 
+dframe$education: Assoc-acdm
+[1] 12.1991
+------------------------------------------------------------ 
+dframe$education: Assoc-voc
+[1] 10.94331
+------------------------------------------------------------ 
+dframe$education: Some-college
+[1] 12.79618
+------------------------------------------------------------ 
+dframe$education: Bachelors
+[1] 11.42306
+------------------------------------------------------------ 
+dframe$education: Masters
+[1] 12.14094
+------------------------------------------------------------ 
+dframe$education: Doctorate
+[1] 14.9196</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(nsd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.94331</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(nsd)[nsd<span class="sc">==</span><span class="fu">min</span>(nsd)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Assoc-voc"</code></pre>
+</div>
+</div>
+<p>On remarque que l’éducation avec le plus petit écart-type est “Assoc-voc” avec un écart-type de 10.94331. C’est cette formation qui a la distribution la plus homogène, bien qu’elle ne soit pas très homogène en soi.</p>
+</section>
+<section id="étendue-interquartile" class="level4">
+<h4 class="anchored" data-anchor-id="étendue-interquartile">Étendue interquartile</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>nIQR <span class="ot">&lt;-</span> <span class="fu">by</span>(dframe<span class="sc">$</span>hours_per_week, dframe<span class="sc">$</span>education, IQR, <span class="at">na.rm=</span>T)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>nIQR</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dframe$education: Preschool
+[1] 10
+------------------------------------------------------------ 
+dframe$education: 1st-4th
+[1] 5
+------------------------------------------------------------ 
+dframe$education: 5th-6th
+[1] 0
+------------------------------------------------------------ 
+dframe$education: 7th-8th
+[1] 5
+------------------------------------------------------------ 
+dframe$education: 9th
+[1] 3.25
+------------------------------------------------------------ 
+dframe$education: 10th
+[1] 10
+------------------------------------------------------------ 
+dframe$education: 11th
+[1] 20
+------------------------------------------------------------ 
+dframe$education: 12th
+[1] 15
+------------------------------------------------------------ 
+dframe$education: HS-grad
+[1] 3
+------------------------------------------------------------ 
+dframe$education: Prof-school
+[1] 15
+------------------------------------------------------------ 
+dframe$education: Assoc-acdm
+[1] 5
+------------------------------------------------------------ 
+dframe$education: Assoc-voc
+[1] 5
+------------------------------------------------------------ 
+dframe$education: Some-college
+[1] 7.75
+------------------------------------------------------------ 
+dframe$education: Bachelors
+[1] 10
+------------------------------------------------------------ 
+dframe$education: Masters
+[1] 10
+------------------------------------------------------------ 
+dframe$education: Doctorate
+[1] 15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(nIQR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(nIQR)[nIQR<span class="sc">==</span><span class="fu">min</span>(nIQR)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "5th-6th"</code></pre>
+</div>
+</div>
+<p>Non, en utilisant l’intervalle interquartile, on remarque que l’éducation qui a le plus petit IQR est “5th-6th”. Cela se remarque déjà dans les boîtes à moustache, car on remarque que c’est celle qui est la plus petite. Sur la boîte à moustache, l’intervalle interquartile est représenté par la boîte en elle-même. On remarque alors que l’IQR correspond à l’étendue de la distribution une fois que l’on a enlevé les 25% les plus petits et les 25% les plus grand.</p>
+</section>
+</section>
+<section id="exercice-5" class="level1">
+<h1>EXERCICE 5</h1>
+<section id="coefficients-de-corrélation" class="level2">
+<h2 class="anchored" data-anchor-id="coefficients-de-corrélation">Coefficients de corrélation</h2>
+<section id="er-graphique" class="level4">
+<h4 class="anchored" data-anchor-id="er-graphique">1<sup><sub>er</sub></sup> graphique :</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Ressources/Figure10.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Sur ce graphique de nuage de point, on peut déjà remarquer que la corrélation est linéaire et positive. La ligne de régression tracée en rouge indique que si x augmente, alors y augmente aussi. On peut estimer que le coefficient de corrélation est d’environ 1, car à chaque augmentation de 1 sur x, une augmentation de 1 sur y peut être visualisée.</p>
+</section>
+<section id="ème-graphique" class="level4">
+<h4 class="anchored" data-anchor-id="ème-graphique">2<sup>ème</sup> graphique</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Ressources/Figure11.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Sur ce graphique, on peut voir que la corrélation est nulle, ou neutre. On peut donc estimer que le coefficient de corrélation est de 0, car il n’existe pas de lien entre les deux variables.</p>
+</section>
+<section id="ème-graphique-1" class="level4">
+<h4 class="anchored" data-anchor-id="ème-graphique-1">3<sup>ème</sup> graphique</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Ressources/Figure12.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Ici, on peut voir que la corrélation est non-linéaire non-monotone, elle n’est ni que décroissante, ni que croissante.</p>
+</section>
+<section id="ème-graphique-2" class="level4">
+<h4 class="anchored" data-anchor-id="ème-graphique-2">4<sup>ème</sup> graphique</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Ressources/Figure13.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>On peut voir ici que nous avons une corrélation linéaire négative qui tend vers -1, car lorsque x augmente de 1, y diminue d’environ 1.</p>
+</section>
+</section>
+</section>
+<section id="exercice-6" class="level1">
+<h1>EXERCICE 6</h1>
+<section id="téléchargement-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="téléchargement-des-données">Téléchargement des données</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>iris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+1            5.1         3.5          1.4         0.2     setosa
+2            4.9         3.0          1.4         0.2     setosa
+3            4.7         3.2          1.3         0.2     setosa
+4            4.6         3.1          1.5         0.2     setosa
+5            5.0         3.6          1.4         0.2     setosa
+6            5.4         3.9          1.7         0.4     setosa
+7            4.6         3.4          1.4         0.3     setosa
+8            5.0         3.4          1.5         0.2     setosa
+9            4.4         2.9          1.4         0.2     setosa
+10           4.9         3.1          1.5         0.1     setosa
+11           5.4         3.7          1.5         0.2     setosa
+12           4.8         3.4          1.6         0.2     setosa
+13           4.8         3.0          1.4         0.1     setosa
+14           4.3         3.0          1.1         0.1     setosa
+15           5.8         4.0          1.2         0.2     setosa
+16           5.7         4.4          1.5         0.4     setosa
+17           5.4         3.9          1.3         0.4     setosa
+18           5.1         3.5          1.4         0.3     setosa
+19           5.7         3.8          1.7         0.3     setosa
+20           5.1         3.8          1.5         0.3     setosa
+21           5.4         3.4          1.7         0.2     setosa
+22           5.1         3.7          1.5         0.4     setosa
+23           4.6         3.6          1.0         0.2     setosa
+24           5.1         3.3          1.7         0.5     setosa
+25           4.8         3.4          1.9         0.2     setosa
+26           5.0         3.0          1.6         0.2     setosa
+27           5.0         3.4          1.6         0.4     setosa
+28           5.2         3.5          1.5         0.2     setosa
+29           5.2         3.4          1.4         0.2     setosa
+30           4.7         3.2          1.6         0.2     setosa
+31           4.8         3.1          1.6         0.2     setosa
+32           5.4         3.4          1.5         0.4     setosa
+33           5.2         4.1          1.5         0.1     setosa
+34           5.5         4.2          1.4         0.2     setosa
+35           4.9         3.1          1.5         0.2     setosa
+36           5.0         3.2          1.2         0.2     setosa
+37           5.5         3.5          1.3         0.2     setosa
+38           4.9         3.6          1.4         0.1     setosa
+39           4.4         3.0          1.3         0.2     setosa
+40           5.1         3.4          1.5         0.2     setosa
+41           5.0         3.5          1.3         0.3     setosa
+42           4.5         2.3          1.3         0.3     setosa
+43           4.4         3.2          1.3         0.2     setosa
+44           5.0         3.5          1.6         0.6     setosa
+45           5.1         3.8          1.9         0.4     setosa
+46           4.8         3.0          1.4         0.3     setosa
+47           5.1         3.8          1.6         0.2     setosa
+48           4.6         3.2          1.4         0.2     setosa
+49           5.3         3.7          1.5         0.2     setosa
+50           5.0         3.3          1.4         0.2     setosa
+51           7.0         3.2          4.7         1.4 versicolor
+52           6.4         3.2          4.5         1.5 versicolor
+53           6.9         3.1          4.9         1.5 versicolor
+54           5.5         2.3          4.0         1.3 versicolor
+55           6.5         2.8          4.6         1.5 versicolor
+56           5.7         2.8          4.5         1.3 versicolor
+57           6.3         3.3          4.7         1.6 versicolor
+58           4.9         2.4          3.3         1.0 versicolor
+59           6.6         2.9          4.6         1.3 versicolor
+60           5.2         2.7          3.9         1.4 versicolor
+61           5.0         2.0          3.5         1.0 versicolor
+62           5.9         3.0          4.2         1.5 versicolor
+63           6.0         2.2          4.0         1.0 versicolor
+64           6.1         2.9          4.7         1.4 versicolor
+65           5.6         2.9          3.6         1.3 versicolor
+66           6.7         3.1          4.4         1.4 versicolor
+67           5.6         3.0          4.5         1.5 versicolor
+68           5.8         2.7          4.1         1.0 versicolor
+69           6.2         2.2          4.5         1.5 versicolor
+70           5.6         2.5          3.9         1.1 versicolor
+71           5.9         3.2          4.8         1.8 versicolor
+72           6.1         2.8          4.0         1.3 versicolor
+73           6.3         2.5          4.9         1.5 versicolor
+74           6.1         2.8          4.7         1.2 versicolor
+75           6.4         2.9          4.3         1.3 versicolor
+76           6.6         3.0          4.4         1.4 versicolor
+77           6.8         2.8          4.8         1.4 versicolor
+78           6.7         3.0          5.0         1.7 versicolor
+79           6.0         2.9          4.5         1.5 versicolor
+80           5.7         2.6          3.5         1.0 versicolor
+81           5.5         2.4          3.8         1.1 versicolor
+82           5.5         2.4          3.7         1.0 versicolor
+83           5.8         2.7          3.9         1.2 versicolor
+84           6.0         2.7          5.1         1.6 versicolor
+85           5.4         3.0          4.5         1.5 versicolor
+86           6.0         3.4          4.5         1.6 versicolor
+87           6.7         3.1          4.7         1.5 versicolor
+88           6.3         2.3          4.4         1.3 versicolor
+89           5.6         3.0          4.1         1.3 versicolor
+90           5.5         2.5          4.0         1.3 versicolor
+91           5.5         2.6          4.4         1.2 versicolor
+92           6.1         3.0          4.6         1.4 versicolor
+93           5.8         2.6          4.0         1.2 versicolor
+94           5.0         2.3          3.3         1.0 versicolor
+95           5.6         2.7          4.2         1.3 versicolor
+96           5.7         3.0          4.2         1.2 versicolor
+97           5.7         2.9          4.2         1.3 versicolor
+98           6.2         2.9          4.3         1.3 versicolor
+99           5.1         2.5          3.0         1.1 versicolor
+100          5.7         2.8          4.1         1.3 versicolor
+101          6.3         3.3          6.0         2.5  virginica
+102          5.8         2.7          5.1         1.9  virginica
+103          7.1         3.0          5.9         2.1  virginica
+104          6.3         2.9          5.6         1.8  virginica
+105          6.5         3.0          5.8         2.2  virginica
+106          7.6         3.0          6.6         2.1  virginica
+107          4.9         2.5          4.5         1.7  virginica
+108          7.3         2.9          6.3         1.8  virginica
+109          6.7         2.5          5.8         1.8  virginica
+110          7.2         3.6          6.1         2.5  virginica
+111          6.5         3.2          5.1         2.0  virginica
+112          6.4         2.7          5.3         1.9  virginica
+113          6.8         3.0          5.5         2.1  virginica
+114          5.7         2.5          5.0         2.0  virginica
+115          5.8         2.8          5.1         2.4  virginica
+116          6.4         3.2          5.3         2.3  virginica
+117          6.5         3.0          5.5         1.8  virginica
+118          7.7         3.8          6.7         2.2  virginica
+119          7.7         2.6          6.9         2.3  virginica
+120          6.0         2.2          5.0         1.5  virginica
+121          6.9         3.2          5.7         2.3  virginica
+122          5.6         2.8          4.9         2.0  virginica
+123          7.7         2.8          6.7         2.0  virginica
+124          6.3         2.7          4.9         1.8  virginica
+125          6.7         3.3          5.7         2.1  virginica
+126          7.2         3.2          6.0         1.8  virginica
+127          6.2         2.8          4.8         1.8  virginica
+128          6.1         3.0          4.9         1.8  virginica
+129          6.4         2.8          5.6         2.1  virginica
+130          7.2         3.0          5.8         1.6  virginica
+131          7.4         2.8          6.1         1.9  virginica
+132          7.9         3.8          6.4         2.0  virginica
+133          6.4         2.8          5.6         2.2  virginica
+134          6.3         2.8          5.1         1.5  virginica
+135          6.1         2.6          5.6         1.4  virginica
+136          7.7         3.0          6.1         2.3  virginica
+137          6.3         3.4          5.6         2.4  virginica
+138          6.4         3.1          5.5         1.8  virginica
+139          6.0         3.0          4.8         1.8  virginica
+140          6.9         3.1          5.4         2.1  virginica
+141          6.7         3.1          5.6         2.4  virginica
+142          6.9         3.1          5.1         2.3  virginica
+143          5.8         2.7          5.1         1.9  virginica
+144          6.8         3.2          5.9         2.3  virginica
+145          6.7         3.3          5.7         2.5  virginica
+146          6.7         3.0          5.2         2.3  virginica
+147          6.3         2.5          5.0         1.9  virginica
+148          6.5         3.0          5.2         2.0  virginica
+149          6.2         3.4          5.4         2.3  virginica
+150          5.9         3.0          5.1         1.8  virginica</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="nuage-de-points" class="level2">
+<h2 class="anchored" data-anchor-id="nuage-de-points">Nuage de points</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>pCol <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'#057076'</span>, <span class="st">'#ff8301'</span>, <span class="st">'#bf5ccb'</span>)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>plot.iris<span class="ot">&lt;-</span><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Petal.Length, <span class="at">y=</span>Petal.Width, <span class="at">col=</span>Species)) <span class="sc">+</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_color_manual</span>(<span class="at">values=</span>pCol) <span class="sc">+</span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">7.5</span>, <span class="at">by=</span><span class="dv">1</span>), <span class="at">limits=</span><span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">7.5</span>)) <span class="sc">+</span></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.5</span>), <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="dv">3</span>)) <span class="sc">+</span></span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Edgar Anderson's Iris Data"</span>,</span>
+<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="at">x=</span><span class="st">"Petal Length"</span>,</span>
+<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="at">y=</span><span class="st">"Petal Width"</span>) <span class="sc">+</span></span>
+<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span>.<span class="dv">5</span>),</span>
+<span id="cb83-10"><a href="#cb83-10" aria-hidden="true" tabindex="-1"></a><span class="at">axis.title=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="dv">2</span>),</span>
+<span id="cb83-11"><a href="#cb83-11" aria-hidden="true" tabindex="-1"></a><span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb83-12"><a href="#cb83-12" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>Species), <span class="at">alpha=</span>.<span class="dv">6</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb83-13"><a href="#cb83-13" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span>
+<span id="cb83-14"><a href="#cb83-14" aria-hidden="true" tabindex="-1"></a>plot.iris <span class="sc">+</span></span>
+<span id="cb83-15"><a href="#cb83-15" aria-hidden="true" tabindex="-1"></a>ggforce<span class="sc">::</span><span class="fu">geom_mark_ellipse</span>(</span>
+<span id="cb83-16"><a href="#cb83-16" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(<span class="at">fill=</span>Species, <span class="at">label=</span>Species),</span>
+<span id="cb83-17"><a href="#cb83-17" aria-hidden="true" tabindex="-1"></a><span class="at">alpha=</span>.<span class="dv">15</span>, <span class="at">show.legend=</span><span class="cn">FALSE</span></span>
+<span id="cb83-18"><a href="#cb83-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Rapport-TP1_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="analyses" class="level3">
+<h3 class="anchored" data-anchor-id="analyses">Analyses</h3>
+<section id="relation-largeur-longueur-des-pétales" class="level4">
+<h4 class="anchored" data-anchor-id="relation-largeur-longueur-des-pétales">Relation largeur-longueur des pétales</h4>
+<p>On peut remarquer une relation linéaire positive entre la largeur et la longueur des pétales. Lorsque la longueur augmente, la largeur à tendance à augmenter aussi.</p>
+</section>
+<section id="observations-inhabituelles" class="level4">
+<h4 class="anchored" data-anchor-id="observations-inhabituelles">Observations inhabituelles</h4>
+<p>Il ne semble pas y avoir d’observations inhabituelles dans la représentation sous forme de nuage de points.</p>
+</section>
+</section>
+</section>
+<section id="corrélation" class="level2">
+<h2 class="anchored" data-anchor-id="corrélation">Corrélation</h2>
+<section id="calcul" class="level4">
+<h4 class="anchored" data-anchor-id="calcul">Calcul</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span>iris<span class="sc">$</span>Petal.Length</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span>iris<span class="sc">$</span>Petal.Width</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9628654</code></pre>
+</div>
+</div>
+<p>La corrélation étant de 0.963, elle est très forte et positive.</p>
+</section>
+</section>
+<section id="différencier-les-types-diris" class="level2">
+<h2 class="anchored" data-anchor-id="différencier-les-types-diris">Différencier les types d’iris</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>setosas <span class="ot">&lt;-</span> iris<span class="sc">$</span>Petal.Length[iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">'setosa'</span>]</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(setosas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(setosas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.9</code></pre>
+</div>
+</div>
+<p>Une longueur comprise entre 1 et 1.9</p>
+</section>
+<section id="animations" class="level2">
+<h2 class="anchored" data-anchor-id="animations">Animations</h2>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ tidyr::expand() masks Matrix::expand()
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+✖ tidyr::pack()   masks Matrix::pack()
+✖ dplyr::recode() masks arules::recode()
+✖ tidyr::unpack() masks Matrix::unpack()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>anim<span class="ot">&lt;-</span>plot.iris<span class="sc">+</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_states</span>(Species,</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">transition_length =</span> <span class="dv">2</span>,</span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">state_length =</span> <span class="dv">1</span>)</span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>anim</span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>anim <span class="sc">+</span></span>
+<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">enter_fade</span>() <span class="sc">+</span></span>
+<span id="cb91-9"><a href="#cb91-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exit_shrink</span>() <span class="sc">+</span></span>
+<span id="cb91-10"><a href="#cb91-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Now showing {closest_state}'</span>,</span>
+<span id="cb91-11"><a href="#cb91-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">'Frame {frame} of {nframes}'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Rapport-TP1_files/figure-html/unnamed-chunk-29-1.gif" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="bonus" class="level2">
+<h2 class="anchored" data-anchor-id="bonus">Bonus</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("reticulate")</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a>iris_py <span class="op">=</span> r.iris</span>
+<span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-8"><a href="#cb93-8" aria-hidden="true" tabindex="-1"></a>versicolor <span class="op">=</span> iris_py[iris_py.Species <span class="op">==</span><span class="st">"versicolor"</span>]</span>
+<span id="cb93-9"><a href="#cb93-9" aria-hidden="true" tabindex="-1"></a>setosa <span class="op">=</span> iris_py[iris_py.Species <span class="op">==</span> <span class="st">"setosa"</span>]</span>
+<span id="cb93-10"><a href="#cb93-10" aria-hidden="true" tabindex="-1"></a>virginica <span class="op">=</span> iris_py[iris_py.Species <span class="op">==</span> <span class="st">"virginica"</span>]</span>
+<span id="cb93-11"><a href="#cb93-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-12"><a href="#cb93-12" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
+<span id="cb93-13"><a href="#cb93-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-14"><a href="#cb93-14" aria-hidden="true" tabindex="-1"></a>plt.scatter(setosa[<span class="st">"Petal.Length"</span>], setosa[<span class="st">"Petal.Width"</span>], label<span class="op">=</span><span class="st">"Setosa"</span>, facecolor<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb93-15"><a href="#cb93-15" aria-hidden="true" tabindex="-1"></a>plt.scatter(virginica[<span class="st">"Petal.Length"</span>], virginica[<span class="st">"Petal.Width"</span>], label<span class="op">=</span><span class="st">"Virginica"</span>, facecolor<span class="op">=</span><span class="st">"blue"</span>)</span>
+<span id="cb93-16"><a href="#cb93-16" aria-hidden="true" tabindex="-1"></a>plt.scatter(versicolor[<span class="st">"Petal.Length"</span>], versicolor[<span class="st">"Petal.Width"</span>], label<span class="op">=</span><span class="st">"Versicolor"</span>,facecolor<span class="op">=</span><span class="st">"green"</span>)</span>
+<span id="cb93-17"><a href="#cb93-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-18"><a href="#cb93-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Petal Length (cm)"</span>)</span>
+<span id="cb93-19"><a href="#cb93-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Petal Width (cm)"</span>)</span>
+<span id="cb93-20"><a href="#cb93-20" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Iris Dataset"</span>)</span>
+<span id="cb93-21"><a href="#cb93-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Rapport-TP1_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion-1" class="level1">
+<h1>CONCLUSION</h1>
+<p><br>
+Ce TP nous a donc permis de nous familiariser avec R et RStudio, deux outils puissants qui rendent l’analyse de données accessible et facile pour un large public. Au cours de ce TP, nous avons acquis la capacité de manipuler divers vecteurs, comprenant leur structure, l’accès à leurs variables et l’utilisation de la fonction summary() pour obtenir des informations essentielles.</p>
+<p>Nous avons également découvert la polyvalence de R en matière de création de graphiques, notamment des histogrammes, des boîtes à moustaches et des nuages de points, chacun ayant ses propres caractéristiques et utilités spécifiques. Cette diversité d’outils nous a permis d’explorer la lecture des données à partir de graphiques et de comparer différents groupes.</p>
+<p>De plus, nous avons pu créer des visualisations dynamiques en utilisant les fonctions ggplot et gganime, ce qui a amélioré la lisibilité et la compréhension de nos données. Enfin, nous avons noté les différences entre R et Python, R étant souvent considéré comme plus lisible et intuitif, ce qui en fait un choix attractif pour ceux qui ne sont pas familiers avec la programmation.</p>
+<p>En résumé, R se révèle être un langage extrêmement polyvalent et captivant pour l’analyse de données. Sa facilité d’accès en fait un outil largement utilisé dans divers domaines, ce qui en renforce l’attrait.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
