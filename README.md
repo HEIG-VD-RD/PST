@@ -1,4 +1,4 @@
-~__Here is the Markdown version of the probability and statistics practical work. A more dynamic QMD version is also available, but it requires R to render and execute the embedded code and to setup a project.__~
+*__Here is the Markdown version of the probability and statistics practical work. A more dynamic QMD version is also available, but it requires R to render and execute the embedded code and to setup a project.__*
 
 # INTRODUCTION
 
